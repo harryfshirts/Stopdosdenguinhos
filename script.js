@@ -1,228 +1,223 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
-}
+const temas = [
+"Animais",
+"Frutas",
+"Verduras",
+"Legumes",
+"Comidas",
+"Bebidas",
+"Profissões",
+"Países",
+"Cidades",
+"Marcas",
+"Carros",
+"Motos",
+"Ferramentas",
+"Objetos da cozinha",
+"Objetos do quarto",
+"Objetos da sala",
+"Objetos do banheiro",
+"Coisas do armário",
+"Coisas da geladeira",
+"Filmes",
+"Séries",
+"Jogos",
+"Flores",
+"Árvores",
+"Esportes",
+"Instrumentos musicais",
+"Materiais de construção",
+"Roupas",
+"Calçados",
+"Supermercado"
+];
 
-body{
+const letras = [
+"A","B","C","D","E","F","G","H","I","J","L","M","N","O","P","Q","R","S","T","U","V"
+];
 
-    background:#6c3df4;
+let vidasRosa = 3;
+let vidasHemerson = 3;
 
-    color:white;
+let temaAtual = "";
+let letraAtual = "";
 
-    height:100vh;
+let tempo = 10;
+let contador;
 
-    overflow:hidden;
+let rosaPronto = false;
+let hemersonPronto = false;
 
-}
+const home = document.getElementById("home");
+const sorteio = document.getElementById("sorteio");
+const jogo = document.getElementById("jogo");
+const fim = document.getElementById("fim");
 
-.tela{
+document.getElementById("btnJogar").onclick = iniciar;
+document.getElementById("rosa").onclick = () => rosaPronto = true;
+document.getElementById("hemerson").onclick = () => hemersonPronto = true;
 
-    width:100%;
+document.getElementById("reiniciar").onclick = () => location.reload();
 
-    height:100vh;
+function iniciar(){
 
-    display:flex;
+home.classList.add("escondido");
+sorteio.classList.remove("escondido");
 
-    flex-direction:column;
+novoTema();
 
-    justify-content:center;
+let c = 7;
 
-    align-items:center;
+document.getElementById("contadorInicio").innerHTML = c;
 
-    padding:20px;
+let espera = setInterval(()=>{
 
-}
+c--;
 
-.escondido{
+document.getElementById("contadorInicio").innerHTML = c;
 
-    display:none;
+if(c==0){
 
-}
+clearInterval(espera);
 
-h1{
+sorteio.classList.add("escondido");
+jogo.classList.remove("escondido");
 
-    font-size:60px;
-
-    margin-bottom:20px;
-
-}
-
-h2{
-
-    font-size:34px;
-
-    margin-bottom:20px;
-
-    text-align:center;
-
-}
-
-h3{
-
-    margin-top:25px;
-
-    font-size:24px;
-
-}
-
-button{
-
-    width:250px;
-
-    height:60px;
-
-    border:none;
-
-    border-radius:15px;
-
-    background:white;
-
-    color:#6c3df4;
-
-    font-size:22px;
-
-    font-weight:bold;
-
-    cursor:pointer;
+rodada();
 
 }
 
-button:active{
-
-    transform:scale(.95);
+},1000);
 
 }
 
-#contadorInicio{
+function novoTema(){
 
-    margin-top:20px;
+temaAtual = temas[Math.floor(Math.random()*temas.length)];
+letraAtual = letras[Math.floor(Math.random()*letras.length)];
 
-    font-size:70px;
-
-    font-weight:bold;
-
-}
-
-#topo{
-
-    width:100%;
-
-    text-align:center;
+document.getElementById("tema").innerHTML = temaAtual;
+document.getElementById("temaJogo").innerHTML = temaAtual;
+document.getElementById("letra").innerHTML = letraAtual;
 
 }
 
-#temaJogo{
+function rodada(){
 
-    margin-top:10px;
+rosaPronto = false;
+hemersonPronto = false;
 
-}
+tempo = 10;
 
-#letra{
+document.getElementById("tempo").innerHTML = tempo;
 
-    font-size:90px;
+contador = setInterval(()=>{
 
-    font-weight:bold;
+tempo--;
 
-    margin:20px 0;
+document.getElementById("tempo").innerHTML = tempo;
 
-}
+if(rosaPronto && hemersonPronto){
 
-#tempo{
+clearInterval(contador);
 
-    width:90px;
+novoTema();
 
-    height:90px;
-
-    border-radius:50%;
-
-    background:white;
-
-    color:#6c3df4;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    font-size:40px;
-
-    margin:auto;
-
-    font-weight:bold;
+setTimeout(rodada,500);
 
 }
 
-#vidas{
+if(tempo==0){
 
-    width:100%;
+clearInterval(contador);
 
-    display:flex;
-
-    justify-content:space-around;
-
-    margin:20px 0;
-
-    font-size:22px;
-
-    font-weight:bold;
+verificar();
 
 }
 
-#jogadores{
+},1000);
 
-    flex:1;
+}function verificar(){
 
-    width:100%;
+if(!rosaPronto){
 
-    display:flex;
-
-}
-
-.lado{
-
-    flex:1;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    font-size:34px;
-
-    font-weight:bold;
-
-    border:2px solid rgba(255,255,255,.3);
-
-    user-select:none;
+vidasRosa--;
 
 }
 
-#rosa{
+if(!hemersonPronto){
 
-    background:#ff4fa3;
-
-}
-
-#hemerson{
-
-    background:#3498db;
+vidasHemerson--;
 
 }
 
-.lado:active{
+document.getElementById("vida1").innerHTML =
+"Rosa " + "❤️".repeat(vidasRosa) + "🤍".repeat(3-vidasRosa);
 
-    filter:brightness(80%);
+document.getElementById("vida2").innerHTML =
+"Hemerson " + "❤️".repeat(vidasHemerson) + "🤍".repeat(3-vidasHemerson);
+
+if(vidasRosa<=0){
+
+jogo.classList.add("escondido");
+
+fim.classList.remove("escondido");
+
+document.getElementById("vencedor").innerHTML =
+"🎉 Hemerson venceu!";
+
+return;
 
 }
 
-#fim h1{
+if(vidasHemerson<=0){
 
-    text-align:center;
+jogo.classList.add("escondido");
 
-    margin-bottom:40px;
+fim.classList.remove("escondido");
+
+document.getElementById("vencedor").innerHTML =
+"🎉 Rosa venceu!";
+
+return;
+
+}
+
+alert(
+(!rosaPronto && !hemersonPronto)
+? "Os dois perderam uma vida!"
+: (!rosaPronto)
+? "Rosa perdeu uma vida!"
+: "Hemerson perdeu uma vida!"
+);
+
+novoTema();
+
+sorteio.classList.remove("escondido");
+
+jogo.classList.add("escondido");
+
+let c = 7;
+
+document.getElementById("contadorInicio").innerHTML = c;
+
+let espera = setInterval(()=>{
+
+c--;
+
+document.getElementById("contadorInicio").innerHTML = c;
+
+if(c==0){
+
+clearInterval(espera);
+
+sorteio.classList.add("escondido");
+
+jogo.classList.remove("escondido");
+
+rodada();
+
+}
+
+},1000);
 
 }
