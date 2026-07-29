@@ -1,25 +1,94 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stop dos Denguinhos</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stop dos Denguinhos</title>
 
-    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div id="home">
+<!-- TELA INICIAL -->
+<div id="home" class="tela">
 
     <h1>🐧</h1>
 
     <h2>Stop dos Denguinhos</h2>
 
-    <p>Quem vai pensar mais rápido?</p>
+    <button id="btnJogar">
+        Iniciar Jogo
+    </button>
 
-    <button id="playButton">
-        Jogar
+</div>
+
+<!-- TELA DE SORTEIO -->
+<div id="sorteio" class="tela escondido">
+
+    <h2>Tema</h2>
+
+    <h1 id="tema">Animais</h1>
+
+    <h3>Começa em</h3>
+
+    <div id="contadorInicio">
+        7
+    </div>
+
+</div>
+
+<!-- TELA DO JOGO -->
+<div id="jogo" class="tela escondido">
+
+    <div id="topo">
+
+        <h2 id="temaJogo">Tema</h2>
+
+        <div id="letra">
+            A
+        </div>
+
+        <div id="tempo">
+            10
+        </div>
+
+    </div>
+
+    <div id="vidas">
+
+        <div id="vida1">
+            Rosa ❤️❤️❤️
+        </div>
+
+        <div id="vida2">
+            Hemerson ❤️❤️❤️
+        </div>
+
+    </div>
+
+    <div id="jogadores">
+
+        <div id="rosa" class="lado">
+            ROSA
+        </div>
+
+        <div id="hemerson" class="lado">
+            HEMERSON
+        </div>
+
+    </div>
+
+</div>
+
+<!-- TELA FINAL -->
+<div id="fim" class="tela escondido">
+
+    <h1 id="vencedor">
+
+    </h1>
+
+    <button id="reiniciar">
+        Jogar Novamente
     </button>
 
 </div>
