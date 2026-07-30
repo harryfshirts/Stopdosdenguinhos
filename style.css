@@ -92,3 +92,109 @@ button:active{
     transform:scale(.95);
 
 }
+.tela{
+    width:100%;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    color:white;
+}
+
+.escondido{
+    display:none;
+}
+
+#sorteio{
+    text-align:center;
+}
+
+#contadorInicio{
+    font-size:90px;
+    font-weight:bold;
+    margin-top:20px;
+}
+
+#jogo{
+    justify-content:flex-start;
+    padding:0;
+}
+
+#topo{
+    width:100%;
+    text-align:center;
+    padding:20px 15px 10px;
+}
+
+#temaJogo{
+    font-size:22px;
+    margin-bottom:10px;
+}
+
+#letra{
+    font-size:90px;
+    font-weight:bold;
+    margin:10px 0;
+}
+
+#tempo{
+    width:80px;
+    height:80px;
+    margin:15px auto;
+    border-radius:50%;
+    background:white;
+    color:#6C63FF;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:36px;
+    font-weight:bold;
+}
+
+#vidas{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    padding:0 20px 15px;
+    font-size:18px;
+    font-weight:bold;
+}
+
+#jogadores{
+    flex:1;
+    width:100%;
+    display:flex;
+}
+
+.lado{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:28px;
+    font-weight:bold;
+    user-select:none;
+    transition:.2s;
+}
+
+#rosa{
+    background:#ff5ca8;
+}
+
+#hemerson{
+    background:#3498db;
+}
+
+.lado:active{
+    filter:brightness(.8);
+}
+
+#fim{
+    text-align:center;
+}
+
+#fim h1{
+    font-size:40px;
+    margin-bottom:30px;
+}
