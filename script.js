@@ -41,7 +41,7 @@ let vidasHemerson = 3;
 let temaAtual = "";
 let letraAtual = "";
 
-let tempo = 10;
+let tempo = 20;
 let contador;
 
 let rosaPronto = false;
@@ -106,7 +106,7 @@ function rodada(){
 rosaPronto = false;
 hemersonPronto = false;
 
-tempo = 10;
+tempo = 20;
 
 document.getElementById("tempo").innerHTML = tempo;
 
