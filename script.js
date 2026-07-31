@@ -65,7 +65,7 @@ sorteio.classList.remove("escondido");
 
 novoTema();
 
-let c = 7;
+let c = 3;
 
 document.getElementById("contadorInicio").innerHTML = c;
 
